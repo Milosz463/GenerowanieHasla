@@ -18,39 +18,40 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         
-        <GroupBox Header="Dane pracownika">
-            <StackPanel>
-                <UniformGrid>
+        <GroupBox Margin="20" Header="Dane pracownika">
+            <StackPanel Margin="15">
+                <UniformGrid Columns="2">
                     <TextBlock>imie</TextBlock>
-            <TextBox></TextBox>
+            <TextBox x:Name="imie"></TextBox>
                 <TextBlock>nazwisko</TextBlock>
-                <TextBox></TextBox>
-                </UniformGrid>
-                <ComboBox>
+                <TextBox x:Name="nazwisko"></TextBox>
+                    <TextBlock>Stanowisko</TextBlock>
+                    <ComboBox x:Name="stanowiska">
                     <ComboBoxItem>Kierownik</ComboBoxItem>
                     <ComboBoxItem>Starszy programista</ComboBoxItem>
                     <ComboBoxItem>Mlodszy programista</ComboBoxItem>
                     <ComboBoxItem>Tester</ComboBoxItem>
                 </ComboBox>
+                    </UniformGrid>
             </StackPanel>
         </GroupBox>
-        
-        <GroupBox Grid.Row="0" Grid.Column="1" Header="Generowanie hasla">
-            <StackPanel>
+
+        <GroupBox Margin="20" Grid.Row="0" Grid.Column="1" Header="Generowanie hasla">
+            <StackPanel Margin="15">
                 <UniformGrid>
                     <TextBlock>Ile znakow?</TextBlock>
-                <TextBox></TextBox>
+                <TextBox x:Name="znakii"></TextBox>
                 </UniformGrid>
-                <CheckBox>Male i wielkie litery</CheckBox>
-                <CheckBox>Cyfry</CheckBox>
-                <CheckBox>Znaki specjalne</CheckBox>
+                <CheckBox x:Name="litery">Male i wielkie litery</CheckBox>
+                <CheckBox x:Name="cyfry">Cyfry</CheckBox>
+                <CheckBox x:Name="znaki">Znaki specjalne</CheckBox>
                 <WrapPanel HorizontalAlignment="Center">
-                    <Button Foreground="White" Background="SteelBlue">Generuj haslo</Button>
+                    <Button Click="Button_Click_1" Foreground="White" Background="SteelBlue">Generuj haslo</Button>
                 </WrapPanel>
             </StackPanel>
         </GroupBox>
         <WrapPanel Margin="20" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Button Foreground="White"  Background="SteelBlue" Width="150">Zatwierdz</Button>
+            <Button Click="Button_Click" Foreground="White"  Background="SteelBlue" Width="150">Zatwierdz</Button>
         </WrapPanel>
     </Grid>
 
