@@ -21,74 +21,76 @@ namespace WpfApp12
     public partial class MainWindow : Window
     {
         string haslo = "";
-        int losowa;
-        string litera = "abcdefghijklmnoprstuwyzx";
-        string znakiSpecjalne = "!@#$%^&*()_+-=";
-
-        Random random = new Random();
+       
         public MainWindow()
         {
             InitializeComponent();
         }
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+    string imiona = imie.Text;
+    string nazwiska = nazwisko.Text;
+    string wybor = stanowiska.Text;
+    if (wybor == "Kierownik")
+    {
+        MessageBox.Show("Dane pracownika: " + imiona + " " + nazwiska + " " + "Kierwonik"+" " + "haslo:"+" " + haslo);
+    }
+    else if (wybor == "Starszy programista")
+    {
+        MessageBox.Show("Dane pracownika: " + imiona + " " + nazwiska + " " + "Starszy programista"+" " + "haslo: " + " " + haslo);
+    }
+    else if (wybor == "Mlodszy programista")
+    {
+        MessageBox.Show("Dane pracownika: " + imiona + " " + nazwiska + " " + "Mlodszy programista"+" " + "haslo: " + " " + haslo);
+    }
+    else if (wybor == "Tester")
+    {
+        MessageBox.Show("Dane pracownika: " + imiona + " " + nazwiska + " " + "Tester"+" " + "haslo: "+" " + haslo);
+    }
+    else
+    {
+        MessageBox.Show("Podaj swoje stanowisko");
+    }
+}
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+private void Button_Click_1(object sender, RoutedEventArgs e)
+{
+    haslo = "";
+    int dlugosc = 0;
+    Random random = new Random();
+    if (int.TryParse(znakii.Text, out dlugosc))
+    {
+        if (litery.IsChecked == true)
         {
-            string imiona=imie.Text;
-            string nazwiska = nazwisko.Text;
-            string wybor = stanowiska.Text;
-            if(wybor== "Kierownik")
-            {
-                MessageBox.Show("Dane pracownika: "+imiona+" " + nazwiska +" "+ "Kierwonik");
-            }
-            else if (wybor == "Starszy programista")
-            {
-                MessageBox.Show("Dane pracownika: " + imiona + " " + nazwiska + " " + "Starszy programista");
-            }
-            else if (wybor == "Mlodszy programista")
-            {
-                MessageBox.Show("Dane pracownika: " + imiona + " " + nazwiska + " " + "Mlodszy programista");
-            }
-            else if (wybor == "Tester")
-            {
-                MessageBox.Show("Dane pracownika: " + imiona + " " + nazwiska + " " + "Tester");
-            }
-            else
-            {
-                MessageBox.Show("Podaj swoje stanowisko");
-            }
+            string litera = "abcdefghijklmnoprstuwyzx";
+            int indeks = random.Next(litera.Length);
+            haslo = haslo + litera[indeks];
+
         }
-
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        if (cyfry.IsChecked == true)
         {
-            
-           generuHaslo();
-        }
+            int losowaCyfra = random.Next(10);
+            haslo = haslo + losowaCyfra.ToString();
 
-        void generuHaslo()
+        }
+        if (znaki.IsChecked == true)
         {
-            
-            
-            if (litery.IsChecked == true)
-            {
-                string litera = "abcdefghijklmnoprstuwyzx";
-                int losowaLitera = random.Next(litera.Length);
-                haslo = haslo + litera[losowaLitera];
-                
-            }
-            if(cyfry.IsChecked == true)
-            {
-                int losowaCyfra = random.Next(10);
-                haslo = haslo + losowaCyfra.ToString();
-                
-            }
-            if (cyfry.IsChecked == true)
-            {
-                int losowyZnak = random.Next(znakiSpecjalne.Length);
-                haslo = haslo + znakiSpecjalne[losowyZnak];
+            string znakiSpecjalne = "!@#$%^&*()_+-=";
+            int indeks = random.Next(znakiSpecjalne.Length);
+            haslo = haslo + znakiSpecjalne[indeks];
 
-            }
-            MessageBox.Show("haslo" + haslo);
+        } 
+        while (haslo.Length < dlugosc)
+        {
+            string male = "qwertyuiopasdfghjklzxcvbnm";
+            int indeks = random.Next(male.Length);
+            haslo += male[indeks];
         }
+        MessageBox.Show("haslo: " + haslo);
+
+    }
+}
+       
     }
 }
